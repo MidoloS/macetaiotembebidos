@@ -2,6 +2,7 @@
 
 import React from "react";
 import GaugeChart from "./GaugeChart";
+import Link from "next/link";
 
 interface TemperatureGaugeProps {
   value: number;
@@ -28,14 +29,22 @@ const TemperatureGauge: React.FC<TemperatureGaugeProps> = ({ value }) => {
   );
 
   return (
-    <GaugeChart
-      value={value}
-      maxValue={50}
-      label="Temperatura"
-      unit="°C"
-      color="#f97316"
-      icon={thermometerIcon}
-    />
+    <Link
+      href={{
+        query: {
+          metric: "temp",
+        },
+      }}
+    >
+      <GaugeChart
+        value={value}
+        maxValue={50}
+        label="Temperatura"
+        unit="°C"
+        color="#f97316"
+        icon={thermometerIcon}
+      />
+    </Link>
   );
 };
 

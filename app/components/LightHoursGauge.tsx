@@ -2,6 +2,7 @@
 
 import React from "react";
 import GaugeChart from "./GaugeChart";
+import Link from "next/link";
 
 interface LightHoursGaugeProps {
   value: number;
@@ -27,14 +28,22 @@ const LightHoursGauge: React.FC<LightHoursGaugeProps> = ({ value }) => {
   );
 
   return (
-    <GaugeChart
-      value={value}
-      maxValue={24}
-      label="Horas de Luz"
-      unit=" h"
-      color="#f59e0b"
-      icon={sunIcon}
-    />
+    <Link
+      href={{
+        query: {
+          metric: "light",
+        },
+      }}
+    >
+      <GaugeChart
+        value={value}
+        maxValue={12}
+        label="Horas de Luz"
+        unit=" h"
+        color="#f59e0b"
+        icon={sunIcon}
+      />
+    </Link>
   );
 };
 

@@ -2,6 +2,7 @@
 
 import React from "react";
 import GaugeChart from "./GaugeChart";
+import Link from "next/link";
 
 interface HumidityGaugeProps {
   value: number;
@@ -21,14 +22,22 @@ const HumidityGauge: React.FC<HumidityGaugeProps> = ({ value }) => {
   );
 
   return (
-    <GaugeChart
-      value={value}
-      maxValue={100}
-      label="Humedad"
-      unit="%"
-      color="#3b82f6"
-      icon={dropletIcon}
-    />
+    <Link
+      href={{
+        query: {
+          metric: "humidity",
+        },
+      }}
+    >
+      <GaugeChart
+        value={value}
+        maxValue={100}
+        label="Humedad"
+        unit="%"
+        color="#3b82f6"
+        icon={dropletIcon}
+      />
+    </Link>
   );
 };
 
