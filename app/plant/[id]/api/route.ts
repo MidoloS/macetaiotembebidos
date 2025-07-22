@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const id = searchParams.get("id");
+  const req = await fetch(
+    "https://macetaiot-9f532-default-rtdb.firebaseio.com/chat/.json"
+  );
 
-  return NextResponse.json({ error: "ID is required" }, { status: 400 });
+  const res = await req.json();
+
+  return NextResponse.json(res);
 }
 
 export async function POST(request: Request) {
@@ -14,7 +17,10 @@ export async function POST(request: Request) {
     "https://macetaiot-9f532-default-rtdb.firebaseio.com/chat/.json",
     {
       method: "POST",
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        ...body,
+        createdAt: new Date().toISOString(),
+      }),
     }
   );
 
