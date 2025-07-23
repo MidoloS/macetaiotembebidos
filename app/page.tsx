@@ -9,13 +9,14 @@ export default async function Home() {
   const res = await fetch(process.env.URL + "/plant/1/api");
   const data = await res.json();
 
-  const points = Object.values(data);
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
+  const points = Object.values(data) as any[];
 
   console.log({ points });
 
   const last = points[points.length - 1];
 
-  const { humidity, temp, light } = last;
+  const { humidity, temp } = last;
 
   const lowLightHours = calculateLowLightHours(points, 2000, 5);
 

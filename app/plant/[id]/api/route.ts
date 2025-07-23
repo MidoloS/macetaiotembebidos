@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET() {
   const req = await fetch(
     "https://macetaiot-9f532-default-rtdb.firebaseio.com/chat/.json"
   );

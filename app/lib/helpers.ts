@@ -1,11 +1,11 @@
 export function calculateLowLightHours(
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   readings: any[],
   lightThreshold: number,
   minutesPerReading: number
 ) {
   // Get the current date and set the time to the beginning of the day (00:00:00)
   // for accurate day-to-day comparison.
-  const now = new Date();
   // For demonstration purposes, we will use the date from the sample data (July 22, 2025).
   // In a real application, you would use 'now'.
   const today = new Date("2025-07-22T00:00:00.000Z");

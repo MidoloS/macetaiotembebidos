@@ -97,6 +97,7 @@ const TimeChart = ({ data }: TimeChartProps) => {
           weight: "bold" as const,
         },
         callbacks: {
+          /* eslint-disable  @typescript-eslint/no-explicit-any */
           title: function (context: any) {
             const date = new Date(context[0].parsed.x);
             return date.toLocaleString("es-ES", {
@@ -106,6 +107,7 @@ const TimeChart = ({ data }: TimeChartProps) => {
               minute: "2-digit",
             });
           },
+          /* eslint-disable  @typescript-eslint/no-explicit-any */
           label: function (context: any) {
             const units = {
               temp: "°C",
@@ -142,6 +144,7 @@ const TimeChart = ({ data }: TimeChartProps) => {
             weight: "bold" as const,
           },
           maxTicksLimit: 7,
+          /* eslint-disable  @typescript-eslint/no-explicit-any */
           callback: function (value: any) {
             const date = new Date(value);
             const dayNames = ["D", "L", "M", "M", "J", "V", "S"]; // Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado
