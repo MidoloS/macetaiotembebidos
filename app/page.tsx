@@ -4,6 +4,10 @@ import TemperatureGauge from "./components/TemperatureGauge";
 import Image from "next/image";
 import { calculateLowLightHours } from "./lib/helpers";
 import { TimeChart } from "./components";
+import { Suspense } from "react";
+
+// Force dynamic rendering to avoid build-time fetch errors
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const res = await fetch(process.env.URL + "/plant/1/api");
@@ -54,7 +58,13 @@ export default async function Home() {
           </div>
         </div>
         <div className="mt-12">
-          <TimeChart data={points} />
+          <Suspense
+            fallback={
+              <div className="h-40 w-full bg-gray-200 animate-pulse rounded"></div>
+            }
+          >
+            <TimeChart data={points} />
+          </Suspense>
         </div>
       </div>
     </div>
