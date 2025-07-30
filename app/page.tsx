@@ -14,13 +14,13 @@ export default async function Home() {
   const data = await res.json();
 
   /* eslint-disable  @typescript-eslint/no-explicit-any */
-  const points = Object.values(data) as any[];
+  const points = Object.values(data || {}) as any[];
 
   console.log({ points });
 
   const last = points[points.length - 1];
 
-  const { humidity, temp } = last;
+  const { humidity = 0, temp = 0 } = last || {};
 
   const lowLightHours = calculateLowLightHours(points, 2000, 5);
 

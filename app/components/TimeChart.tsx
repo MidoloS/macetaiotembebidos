@@ -66,7 +66,7 @@ const TimeChart = ({ data }: TimeChartProps) => {
         pointHoverRadius: 6,
         pointBorderColor: "#ffffff",
         pointBorderWidth: 1,
-        tension: 0.4,
+        tension: 0.8,
       },
     ],
   };
@@ -167,7 +167,7 @@ const TimeChart = ({ data }: TimeChartProps) => {
   };
 
   return (
-    <div className="h-40 w-full">
+    <div className="h-40 w-full mb-20">
       <Line data={chartData} options={options} />
     </div>
   );

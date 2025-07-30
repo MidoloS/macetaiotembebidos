@@ -8,7 +8,8 @@ export function calculateLowLightHours(
   // for accurate day-to-day comparison.
   // For demonstration purposes, we will use the date from the sample data (July 22, 2025).
   // In a real application, you would use 'now'.
-  const today = new Date("2025-07-22T00:00:00.000Z");
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   const startOfDay = new Date(
     today.getFullYear(),
