@@ -27,7 +27,7 @@ export default async function Home() {
   console.log({ lowLightHours });
 
   return (
-    <div className="min-h-screen max-h-screen bg-gray-100 overflow-hidden flex justify-center">
+    <div className="min-h-screen  bg-gray-100  flex justify-center">
       <div className="mx-auto h-full flex flex-col w-full">
         <div className="flex flex-col items-center justify-center bg-gray-50 w-full">
           <h1
@@ -57,7 +57,7 @@ export default async function Home() {
             <TemperatureGauge value={temp} />
           </div>
         </div>
-        <div className="mt-12">
+        <div className="mt-12 mb-32">
           <Suspense
             fallback={
               <div className="h-40 w-full bg-gray-200 animate-pulse rounded"></div>

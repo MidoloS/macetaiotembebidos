@@ -167,7 +167,7 @@ const TimeChart = ({ data }: TimeChartProps) => {
   };
 
   return (
-    <div className="h-40 w-full mb-20">
+    <div className="h-40 w-full">
       <Line data={chartData} options={options} />
     </div>
   );
