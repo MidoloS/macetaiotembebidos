@@ -66,7 +66,7 @@ const TimeChart = ({ data }: TimeChartProps) => {
         pointHoverRadius: 6,
         pointBorderColor: "#ffffff",
         pointBorderWidth: 1,
-        tension: 0.8,
+        tension: 0.3,
       },
     ],
   };
@@ -145,10 +145,18 @@ const TimeChart = ({ data }: TimeChartProps) => {
           },
           maxTicksLimit: 7,
           /* eslint-disable  @typescript-eslint/no-explicit-any */
-          callback: function (value: any) {
+          callback: function (value: any, index: any, ticks: any) {
             const date = new Date(value);
-            const dayNames = ["D", "L", "M", "M", "J", "V", "S"]; // Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado
-            return dayNames[date.getDay()];
+            const dayNames = ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"]; // Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado
+
+            // Only show label if it's the first tick or if the day changed from previous tick
+            if (index === 0) return dayNames[date.getDay()];
+
+            const prevDate = new Date(ticks[index - 1].value);
+            const currentDay = date.getDay();
+            const prevDay = prevDate.getDay();
+
+            return currentDay !== prevDay ? dayNames[currentDay] : "";
           },
         },
         border: {
